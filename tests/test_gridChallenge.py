@@ -1,23 +1,24 @@
 import unittest
+from unittest.mock import patch
 from hackerrank.gridChallenge import gridChallenge
 
 class TestGridChallenge(unittest.TestCase):
-    def test_grid_challenge_example1(self):
-        input_grid = ['ebacd', 'fghij', 'olmkn', 'trpqs', 'xywuv']
+    @patch('builtins.input', side_effect=[5, 'ebacd', 'fghij', 'olmkn', 'trpqs', 'xywuv'])
+    def test_grid_challenge_example1(self, mock_input):
         expected_output = "YES"
-        self.assertEqual(gridChallenge(input_grid), expected_output)
+        self.assertEqual(gridChallenge(mock_input()), expected_output)
 
-    def test_grid_challenge_example2(self):
-        input_grid = ['abc', 'def', 'ghi']
+    @patch('builtins.input', side_effect=[3, 'abc', 'def', 'ghi'])
+    def test_grid_challenge_example2(self, mock_input):
         expected_output = "YES"
-        self.assertEqual(gridChallenge(input_grid), expected_output)
+        self.assertEqual(gridChallenge(mock_input()), expected_output)
 
-    def test_grid_challenge_single_row(self):
-        input_grid = ["abc"]
+    @patch('builtins.input', side_effect=[1, 'abc'])
+    def test_grid_challenge_single_row(self, mock_input):
         expected_output = "YES"
-        self.assertEqual(gridChallenge(input_grid), expected_output)
+        self.assertEqual(gridChallenge(mock_input()), expected_output)
 
-    def test_grid_challenge_single_column(self):
-        input_grid = ["a", "b", "c"]
+    @patch('builtins.input', side_effect=[3, 'a', 'b', 'c'])
+    def test_grid_challenge_single_column(self, mock_input):
         expected_output = "YES"
-        self.assertEqual(gridChallenge(input_grid), expected_output)
+        self.assertEqual(gridChallenge(mock_input()), expected_output)

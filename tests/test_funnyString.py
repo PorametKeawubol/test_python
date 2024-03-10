@@ -1,24 +1,24 @@
 import unittest
+from unittest.mock import patch
 from hackerrank.funnyString import funnyString
 
 class TestFunnyString(unittest.TestCase):
-    def test_funny_string_acxz(self):
-        input_string = "acxz"
+    @patch('builtins.input', side_effect=["acxz"])
+    def test_funny_string_acxz(self, mock_input):
         expected_output = "Funny"
-        self.assertEqual(funnyString(input_string), expected_output)
+        self.assertEqual(funnyString(mock_input()), expected_output)
 
-    def test_funny_string_bcxz(self):
-        input_string = "bcxz"
+    @patch('builtins.input', side_effect=["bcxz"])
+    def test_funny_string_bcxz(self, mock_input):
         expected_output = "Not Funny"
-        self.assertEqual(funnyString(input_string), expected_output)
+        self.assertEqual(funnyString(mock_input()), expected_output)
 
-    def test_funny_string_abcd(self):
-        input_string = "ptvzstvotxqyvzrwyqryzrpkswzryupwutmigc"
+    @patch('builtins.input', side_effect=["ptvzstvotxqyvzrwyqryzrpkswzryupwutmigc"])
+    def test_funny_string_abcd(self, mock_input):
         expected_output = "Funny"
-        self.assertEqual(funnyString(input_string), expected_output)
+        self.assertEqual(funnyString(mock_input()), expected_output)
 
-    def test_funny_string_abc(self):
-        input_string = "ceiosyrtztvnqsuozrxvtqywqwyrxtnjh"
+    @patch('builtins.input', side_effect=["ceiosyrtztvnqsuozrxvtqywqwyrxtnjh"])
+    def test_funny_string_abc(self, mock_input):
         expected_output = "Not Funny"
-        self.assertEqual(funnyString(input_string), expected_output)
-
+        self.assertEqual(funnyString(mock_input()), expected_output)

@@ -1,23 +1,27 @@
 import unittest
+from unittest.mock import patch
 from hackerrank.alternate import alternate
 
 class TestAlternate(unittest.TestCase):
-    def test_alternate_example1(self):
-        input_string = "beabeefeab"
+    @patch('builtins.input', side_effect=["beabeefeab"])
+    def test_alternate_example1(self, mock_input):
         expected_output = 5
-        self.assertEqual(alternate(input_string), expected_output)
+        self.assertEqual(alternate(mock_input()), expected_output)
 
-    def test_alternate_example2(self):
-        input_string = "aaaabbbb"
+    @patch('builtins.input', side_effect=["aaaabbbb"])
+    def test_alternate_example2(self, mock_input):
         expected_output = 0
-        self.assertEqual(alternate(input_string), expected_output)
+        self.assertEqual(alternate(mock_input()), expected_output)
 
-    def test_alternate_example3(self):
-        input_string = "abcde"
+    @patch('builtins.input', side_effect=["abcde"])
+    def test_alternate_example3(self, mock_input):
         expected_output = 2
-        self.assertEqual(alternate(input_string), expected_output)
+        self.assertEqual(alternate(mock_input()), expected_output)
 
-    def test_alternate_example4(self):
-        input_string = "ababababab"
+    @patch('builtins.input', side_effect=["ababababab"])
+    def test_alternate_example4(self, mock_input):
         expected_output = 10
-        self.assertEqual(alternate(input_string), expected_output)  
+        self.assertEqual(alternate(mock_input()), expected_output)
+
+if __name__ == '__main__':
+    unittest.main()

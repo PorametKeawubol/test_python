@@ -1,28 +1,29 @@
 import unittest
+from unittest.mock import patch
 from hackerrank.alternatingCharacters import alternatingCharacters
 
 class TestAlternatingCharacters(unittest.TestCase):
-    def test_alternating_characters_AAAA(self):
-        input_string = "AAAA"
+    @patch('builtins.input', side_effect=["AAAA"])
+    def test_alternating_characters_AAAA(self, mock_input):
         expected_output = 3
-        self.assertEqual(alternatingCharacters(input_string), expected_output)
+        self.assertEqual(alternatingCharacters(mock_input()), expected_output)
 
-    def test_alternating_characters_BBBBB(self):
-        input_string = "BBBBB"
+    @patch('builtins.input', side_effect=["BBBBB"])
+    def test_alternating_characters_BBBBB(self, mock_input):
         expected_output = 4
-        self.assertEqual(alternatingCharacters(input_string), expected_output)
+        self.assertEqual(alternatingCharacters(mock_input()), expected_output)
 
-    def test_alternating_characters_ABABABAB(self):
-        input_string = "ABABABAB"
+    @patch('builtins.input', side_effect=["ABABABAB"])
+    def test_alternating_characters_ABABABAB(self, mock_input):
         expected_output = 0
-        self.assertEqual(alternatingCharacters(input_string), expected_output)
+        self.assertEqual(alternatingCharacters(mock_input()), expected_output)
 
-    def test_alternating_characters_BABABA(self):
-        input_string = "BABABA"
+    @patch('builtins.input', side_effect=["BABABA"])
+    def test_alternating_characters_BABABA(self, mock_input):
         expected_output = 0
-        self.assertEqual(alternatingCharacters(input_string), expected_output)
+        self.assertEqual(alternatingCharacters(mock_input()), expected_output)
 
-    def test_alternating_characters_AAABBB(self):
-        input_string = "AAABBB"
+    @patch('builtins.input', side_effect=["AAABBB"])
+    def test_alternating_characters_AAABBB(self, mock_input):
         expected_output = 4
-        self.assertEqual(alternatingCharacters(input_string), expected_output)
+        self.assertEqual(alternatingCharacters(mock_input()), expected_output)
